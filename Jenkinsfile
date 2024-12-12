@@ -1,15 +1,14 @@
 pipeline {
     agent any
-    environment{
-
-            VERSION_NAME="1.34"
+    environment {
+        VERSION_NAME = "1.34"  // Environment variable
     }
     stages {
         
         stage("compile") {
             steps {
                 bat 'javac Test.java'
-                bat 'echo "${VERSION_NAME}"'  // Use `bat` instead of `sh` for Windows
+                bat 'echo %VERSION_NAME%'  // Correct Windows syntax for environment variable
             }
         }
 
